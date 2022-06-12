@@ -1,13 +1,11 @@
 package page;
 
-import model.UserData;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 
-import java.util.List;
-
+@Log4j2
 public class RegistrationPage extends BasePage{
 
     @FindBy(xpath = "//input[@id='create_first']")
@@ -35,61 +33,61 @@ public class RegistrationPage extends BasePage{
     private WebElement errorMessage;
 
     public RegistrationPage openPage(String url) {
+        log.info("Open registration page");
         driver.get(url);
         return this;
     }
 
     public RegistrationPage fillInFirstName(String firstNameToEnter) {
-        //log.info("Enter login");
+        log.info("Enter first name");
         firstName.clear();
         firstName.sendKeys(firstNameToEnter);
         return this;
     }
 
     public RegistrationPage fillInLastName(String lastNameToEnter) {
-        //log.info("Enter login");
+        log.info("Enter last name");
         lastName.clear();
         lastName.sendKeys(lastNameToEnter);
         return this;
     }
 
     public RegistrationPage fillInEmail(String emailToEnter) {
-        //log.info("Enter login");
+        log.info("Enter email");
         email.clear();
-        email.sendKeys(Keys.CONTROL + "v");
+        email.sendKeys(emailToEnter);
         return this;
     }
 
     public RegistrationPage chooseTimeZone(String timeZoneToChoose) {
-        //log.info("Enter login");
-        UserData userData = new UserData();
-        String timeZone1 = userData.getTimeZone();
-        timeZone.click();
-        driver.findElement(By.xpath(String.format("//select[@id='create_timezone']//option[contains(text(), '%s')]", timeZone1))).click();
+        log.info("Choose timezone");
+        Select select = new Select(timeZone);
+        select.selectByVisibleText(timeZoneToChoose);
         return this;
     }
 
 
     public RegistrationPage fillInPassword(String passwordToEnter) {
-       // log.info("Enter password");
+        log.info("Enter password");
         password.clear();
         password.sendKeys(passwordToEnter);
         return this;
     }
 
     public RegistrationPage fillInConfirmPassword(String confirmPasswordToEnter) {
-        // log.info("Enter password");
+         log.info("Enter password for confirmation");
         confirmPassword.clear();
         confirmPassword.sendKeys(confirmPasswordToEnter);
         return this;
     }
 
     public void clickCreateNewAccountButton() {
-//        log.info("Click \"Login\" button");
+        log.info("Click \"Create new account\" button");
         createNewAccountButton.click();
     }
 
     public String getErrorMessage(){
+        log.info("Get text of error message");
         return errorMessage.getText();
     }
 

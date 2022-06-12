@@ -1,38 +1,35 @@
 package driver;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class DriverSingleton {
 
-    private static WebDriver driver;
+    private static ThreadLocal<DriverSingleton> instance = new ThreadLocal<>();
+
+    private WebDriver driver;
 
     private DriverSingleton() {
+        driver = WebDriverFactory.getWebDriver();
     }
 
-    public static WebDriver getDriver() {
-        if (null == driver) {
-            switch (System.getProperty("browser", "chrome")) {
-                case "firefox": {
-                    WebDriverManager.firefoxdriver().setup();
-                    driver = new FirefoxDriver();
-                    break;
-                }
-                default: {
-                    WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver();
-                }
-            }
-            driver.manage().window().maximize();
+    public static synchronized DriverSingleton getInstance() {
+        if (instance.get() == null) {
+            instance.set(new DriverSingleton());
         }
+        return instance.get();
+    }
+
+    public WebDriver getDriver() {
         return driver;
     }
 
-    public static void closeDriver(){
-        driver.quit();
-        driver = null;
+    public void closeDriver() {
+        try {
+            driver.quit();
+            driver = null;
+        } finally {
+            instance.remove();
+        }
     }
 
 }

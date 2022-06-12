@@ -1,47 +1,31 @@
 package service;
 
+import lombok.extern.log4j.Log4j2;
 import model.UserData;
 import page.RegistrationPage;
 import page.UserProfilePage;
+import static utils.StringConstant.REGISTRATION_URL;
 
+@Log4j2
 public class RegistrationPageService {
 
-    private static final String REGISTRATION_URL = "https://log.finalsurge.com/register.cshtml?page_redirect=%2fUserProfile.cshtml";
-
     private RegistrationPage registrationPage = new RegistrationPage();
-    private UserData userData = new UserData();
+    private UserData userData;
 
-    public UserProfilePage registerSuccessfully(){
+    public UserProfilePage register(UserData user){
         try{
             registrationPage.openPage(REGISTRATION_URL)
-                    .fillInFirstName(userData.getFirstName())
-                    .fillInLastName(userData.getLastName())
-                    .chooseTimeZone(userData.getTimeZone())
-                    .fillInEmail(userData.getTempEmailForRegistration())
-                    .fillInPassword(userData.getPassword())
-                    .fillInConfirmPassword(userData.getConfirmPassword())
+                    .fillInFirstName(user.getFirstName())
+                    .fillInLastName(user.getLastName())
+                    .chooseTimeZone(user.getTimeZone())
+                    .fillInEmail(user.getEmail())
+                    .fillInPassword(user.getPassword())
+                    .fillInConfirmPassword(user.getConfirmPassword())
                     .clickCreateNewAccountButton();}
         catch (Exception exception){
-//            log.error("Registration failed");
+            log.error("Successful registration failed");
         }
         return new UserProfilePage();
-
-    }
-
-    public RegistrationPage registerWithWrongConfirmPassword(){
-        try{
-            registrationPage.openPage(REGISTRATION_URL)
-                    .fillInFirstName(userData.getFirstName())
-                    .fillInLastName(userData.getLastName())
-                    .chooseTimeZone(userData.getTimeZone())
-                    .fillInEmail(userData.getTempEmailForRegistration())
-                    .fillInPassword(userData.getPassword())
-                    .fillInConfirmPassword(userData.getWrongConfirmPassword())
-                    .clickCreateNewAccountButton();}
-        catch (Exception exception){
-//            log.error("Registration failed");
-        }
-        return new RegistrationPage();
 
     }
 
