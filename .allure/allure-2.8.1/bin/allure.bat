@@ -63,7 +63,7 @@ set CMD_LINE_ARGS=%*
 :execute
 @rem Setup the command line
 
-set CLASSPATH=set CLASSPATH=%APP_HOME%\lib\*;%APP_HOME%\lib\config
+set CLASSPATH=%APP_HOME%\lib\*;%APP_HOME%\lib\config
 
 @rem Execute allure
 "%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %ALLURE_OPTS%  -classpath "%CLASSPATH%" io.qameta.allure.CommandLine %CMD_LINE_ARGS%
