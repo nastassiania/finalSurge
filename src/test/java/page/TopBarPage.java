@@ -16,9 +16,6 @@ public class TopBarPage extends BasePage{
     @FindBy(xpath = "//div[@class='user-info']//strong")
     private WebElement userName;
 
-    @FindBy(xpath = "//i[@class='icsw16-day-calendar']")
-    private WebElement calendarLogoButton;
-
     @FindBy(xpath = "//i[@class='icsw16-home']")
     private WebElement dashboardLogoButton;
 
@@ -43,11 +40,6 @@ public class TopBarPage extends BasePage{
         log.info("Choose \"" + topMenuOption + "\" and \"" + dropdowmTopMenuOption + "\" on the navigation panel");
         new TopBar(topMenuOption).chooseTopMenuOption();
         new DropDown(dropdowmTopMenuOption).chooseTopMenuOption();
-    }
-
-    public void clickCalendarLogoButton(){
-        log.info("Click \"Calendar\" logo button");
-        calendarLogoButton.click();
     }
 
     public void clickDashboardLogoButton(){
