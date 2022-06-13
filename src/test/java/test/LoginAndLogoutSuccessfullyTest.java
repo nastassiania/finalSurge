@@ -1,5 +1,6 @@
 package test;
 
+import io.qameta.allure.Description;
 import lombok.extern.log4j.Log4j2;
 import model.UserData;
 import org.testng.Assert;
@@ -30,6 +31,7 @@ public class LoginAndLogoutSuccessfullyTest extends BaseTest {
     }
 
     @Test(description = "Successful login", retryAnalyzer = Retry.class)
+    @Description("Successful login")
     public void logInSuccessfullyTest() {
         UserData credentials = UserData.builder()
                 .email(email)

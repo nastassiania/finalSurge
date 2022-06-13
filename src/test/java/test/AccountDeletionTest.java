@@ -1,5 +1,6 @@
 package test;
 
+import io.qameta.allure.Description;
 import lombok.extern.log4j.Log4j2;
 import model.UserData;
 import org.testng.Assert;
@@ -47,6 +48,7 @@ public class AccountDeletionTest extends BaseTest {
     }
 
     @Test(description = "Deletion of created account")
+    @Description("Deletion of created account")
     public void deleteAccountTest() {
         logoutPage = userProfilePageService.deleteAccount();
         String actualMessageAfterAccountDeletion = logoutPage.getTextOfMessageAfterSuccessfulLogOut();
@@ -57,6 +59,7 @@ public class AccountDeletionTest extends BaseTest {
     }
 
     @Test(dependsOnMethods = "deleteAccountTest", description = "Verification that user can't login with credentials of previously deleted account")
+    @Description("Verification that user can't login with credentials of previously deleted account")
     public void verifyAccountWasDeletedTest() {
         logoutPage.clickAccountLoginButton();
         loginPageService.logIn(UserData.builder().email(tempEmail).password(password).build());

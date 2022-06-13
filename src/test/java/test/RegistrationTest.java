@@ -1,5 +1,6 @@
 package test;
 
+import io.qameta.allure.Description;
 import lombok.extern.log4j.Log4j2;
 import model.UserData;
 import org.testng.Assert;
@@ -39,6 +40,7 @@ public class RegistrationTest extends BaseTest {
     }
 
     @Test(description = "Successful registration of a new user")
+    @Description("Successful registration of a new user")
     public void registerNewUserSuccessfullyTest() {
         UserData user = UserData.builder()
                 .firstName(firstName)
@@ -58,6 +60,7 @@ public class RegistrationTest extends BaseTest {
     }
 
     @Test(description = "Unsuccessful registration of a new user if user inputs incorrect confirmation password")
+    @Description("Unsuccessful registration of a new user if user inputs incorrect confirmation password")
     public void registerNewUserWithWrongConfirmPasswordTest() {
         UserData user = UserData.builder()
                 .firstName(firstName)

@@ -1,5 +1,6 @@
 package test;
 
+import io.qameta.allure.Description;
 import lombok.extern.log4j.Log4j2;
 import model.UserData;
 import org.testng.Assert;
@@ -31,6 +32,7 @@ public class EquipmentBikesTest extends BaseTest{
     }
 
     @Test(description = "New Bike addition to equipment")
+    @Description("New Bike addition to equipment")
     public void addBikeTest() {
         topBarPage.chooseNeededOptionInUpperBar(gearAndRoutes, bikes);
         int amountOfUserBikesBeforeTest = getAmountOfUserBikes();

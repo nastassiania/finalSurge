@@ -1,6 +1,7 @@
 package test;
 
 
+import io.qameta.allure.Description;
 import lombok.extern.log4j.Log4j2;
 import model.UserData;
 import org.openqa.selenium.NoSuchElementException;
@@ -32,6 +33,7 @@ public class AddWorkoutTest extends BaseTest {
     }
 
     @Test(description = "New Long Run activity addition")
+    @Description("New Long Run activity addition")
     public void addWorkoutRunLongRunTest() {
         topBarPage.clickDashboardLogoButton();
         int amountOfWorkoutsStart = getQuantityOfWorkouts();

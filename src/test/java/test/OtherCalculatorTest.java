@@ -1,5 +1,6 @@
 package test;
 
+import io.qameta.allure.Description;
 import lombok.extern.log4j.Log4j2;
 import model.UserData;
 import org.testng.Assert;
@@ -29,6 +30,7 @@ public class OtherCalculatorTest extends BaseTest{
         }
 
         @Test(description = "Verification that CaloriesNeeds Calculator counts properly")
+        @Description("Verification that CaloriesNeeds Calculator counts properly")
         public void checkCaloriesNeedsCalculatorTest() {
             otherCalculatorPage = otherCalculatorsPageService.checkCaloricNeeds();
             String actualCaloriesForTestPerson = otherCalculatorPage.getTextOfTodayCaloricNeeds();

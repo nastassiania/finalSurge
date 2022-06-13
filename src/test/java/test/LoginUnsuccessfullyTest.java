@@ -1,5 +1,6 @@
 package test;
 
+import io.qameta.allure.Description;
 import lombok.extern.log4j.Log4j2;
 import model.UserData;
 import org.testng.Assert;
@@ -23,6 +24,7 @@ public class LoginUnsuccessfullyTest extends BaseTest{
     }
 
     @Test(description = "Login with incorrect password")
+    @Description("Login with incorrect password")
     public void LogInWithWrongPasswordTest() {
         UserData credentials = UserData.builder()
                 .email(email)
