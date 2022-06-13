@@ -52,7 +52,7 @@ public class RegistrationTest extends BaseTest {
                 .build();
         registrationService.register(user);
         String actualWelcomingMessage = topBarPage.getTextOfWelcoming();
-        String expectedWelcomingMessage = "Welcome, " + user.getFirstName();
+        String expectedWelcomingMessage = welcome + user.getFirstName();
         userProfilePageService.deleteAccount();
         log.info("Actual message - \n" + actualWelcomingMessage + "\n");
         log.info("Expected message - \n" + expectedWelcomingMessage + "\n");
@@ -72,7 +72,7 @@ public class RegistrationTest extends BaseTest {
                 .build();
         registrationService.register(user);
         String actualErrorMessage = registrationPage.getErrorMessage();
-        String expectedErrorMessage = "Error: The passwords you entered did not match.";
+        String expectedErrorMessage = unsuccessful_registration;
         log.info("Actual message - \n" + actualErrorMessage + "\n");
         log.info("Expected message - \n" + expectedErrorMessage + "\n");
         Assert.assertEquals(actualErrorMessage, expectedErrorMessage, "Actual error message doesn't match the expected one!");

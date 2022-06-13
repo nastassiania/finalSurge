@@ -52,7 +52,7 @@ public class AccountDeletionTest extends BaseTest {
     public void deleteAccountTest() {
         logoutPage = userProfilePageService.deleteAccount();
         String actualMessageAfterAccountDeletion = logoutPage.getTextOfMessageAfterSuccessfulLogOut();
-        String expectedMessageAfterAccountDeletion = "You have been successfully logged out of the system.";
+        String expectedMessageAfterAccountDeletion = successful_logout;
         log.info("Actual message - \n" + actualMessageAfterAccountDeletion + "\n");
         log.info("Expected message - \n" + expectedMessageAfterAccountDeletion + "\n");
         Assert.assertEquals(actualMessageAfterAccountDeletion, expectedMessageAfterAccountDeletion, "Actual message doesn't match the expected one!");
@@ -65,7 +65,7 @@ public class AccountDeletionTest extends BaseTest {
         loginPageService.logIn(UserData.builder().email(tempEmail).password(password).build());
         LoginPage loginPage = new LoginPage();
         String actualLoginMessage = loginPage.getTextOfErrorMessage();
-        String expectedLoginMessage = "Invalid login credentials. Please try again.";
+        String expectedLoginMessage = invalid_login_creds;
         log.info("Actual message - \n" + actualLoginMessage + "\n");
         log.info("Expected message - \n" + expectedLoginMessage + "\n");
         Assert.assertEquals(actualLoginMessage, expectedLoginMessage, "Actual message doesn't match the expected one!");

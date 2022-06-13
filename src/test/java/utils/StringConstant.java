@@ -36,4 +36,11 @@ public class StringConstant {
     //--------TestData for Calculators
     public static String caloricNeed = "2,218 kCal";
 
+    //--------Messages and Errors Text
+    public static String invalid_login_creds = "Invalid login credentials. Please try again.";
+    public static String successful_logout = "You have been successfully logged out of the system.";
+    public static String successful_login = "View, Edit and Add workouts.";
+    public static String unsuccessful_registration = "Error: The passwords you entered did not match.";
+    public static String welcome = "Welcome, ";
+
 }

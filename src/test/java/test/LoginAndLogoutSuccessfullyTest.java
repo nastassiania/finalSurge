@@ -39,7 +39,7 @@ public class LoginAndLogoutSuccessfullyTest extends BaseTest {
                 .build();
         loginPageService.logIn(credentials);
         String actualLogInMessage = userProfilePage.getTextOfMessageWhenLoggedIn();
-        String expectedLogInMessage = "View, Edit and Add workouts.";
+        String expectedLogInMessage = successful_login;
         log.info("Actual message - \n" + actualLogInMessage + "\n");
         log.info("Expected message - \n" + expectedLogInMessage + "\n");
         Assert.assertEquals(actualLogInMessage, expectedLogInMessage, "Actual message doesn't match the expected one!");
@@ -49,7 +49,7 @@ public class LoginAndLogoutSuccessfullyTest extends BaseTest {
     public void logOutTest() {
         topBarPage.clickLogOutButton();
         String actualLogOutMessage = logoutPage.getTextOfMessageAfterSuccessfulLogOut();
-        String expectedLogOutMessage = "You have been successfully logged out of the system.";
+        String expectedLogOutMessage = successful_logout;
         log.info("Actual message - \n" + actualLogOutMessage + "\n");
         log.info("Expected message - \n" + expectedLogOutMessage + "\n");
         Assert.assertEquals(actualLogOutMessage, expectedLogOutMessage, "Actual message doesn't match the expected one!");
