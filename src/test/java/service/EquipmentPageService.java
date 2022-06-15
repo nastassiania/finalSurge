@@ -7,10 +7,10 @@ import page.EquipmentPage;
 @Log4j2
 public class EquipmentPageService {
 
-    private EquipmentPage equipmentPage = new EquipmentPage();
-    private EquipmentData equipmentData = new EquipmentData();
+    private final EquipmentPage equipmentPage = new EquipmentPage();
+    private final EquipmentData equipmentData = new EquipmentData();
 
-    public EquipmentPage addNewEquipment() {
+    public void addNewEquipment() {
         try {
             equipmentPage.fillInEquipmentName(equipmentData.getBikeName())
                     .chooseEquipmentBrand(equipmentData.getBikeBrand())
@@ -23,8 +23,6 @@ public class EquipmentPageService {
         } catch (Exception exception) {
             log.error("New equipment addition failed!");
         }
-        return new EquipmentPage();
-
     }
 
 

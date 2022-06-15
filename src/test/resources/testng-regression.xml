@@ -21,11 +21,6 @@
             <class name="test.AccountDeletionTest"/>
         </classes>
     </test>
-    <test name="Workouts test">
-        <classes>
-            <class name="test.AddWorkoutTest"/>
-        </classes>
-    </test>
     <test name="Gear And Routes test">
         <classes>
             <class name="test.EquipmentBikesTest"/>
@@ -34,6 +29,11 @@
     <test name="Calculator test">
         <classes>
             <class name="test.OtherCalculatorTest"/>
+        </classes>
+    </test>
+    <test name="Workouts test">
+        <classes>
+            <class name="test.AddWorkoutTest"/>
         </classes>
     </test>
 </suite>

@@ -20,7 +20,6 @@ public class AddWorkoutTest extends BaseTest {
 
     private DashboardPage dashboardPage;
     private TopBarPage topBarPage;
-    private LoginPageService loginPageService;
     private AddWorkoutPageService addWorkoutPageService;
 
     @BeforeClass
@@ -28,7 +27,7 @@ public class AddWorkoutTest extends BaseTest {
         dashboardPage = new DashboardPage();
         topBarPage = new TopBarPage();
         addWorkoutPageService = new AddWorkoutPageService();
-        loginPageService = new LoginPageService();
+        LoginPageService loginPageService = new LoginPageService();
         loginPageService.logIn(UserData.builder().email(email).password(password).build());
     }
 
@@ -41,10 +40,7 @@ public class AddWorkoutTest extends BaseTest {
         addWorkoutPageService.addNewRunWorkout(longRun);
         topBarPage.clickDashboardLogoButton();
         int amountOfWorkoutsAfterAddingNewWorkout = getQuantityOfWorkouts();
-        log.info("Amount of workouts before test - \n" + amountOfWorkoutsStart + "\n");
-        log.info("Amount of workouts after test - \n" + amountOfWorkoutsAfterAddingNewWorkout + "\n");
-        Assert.assertTrue(amountOfWorkoutsAfterAddingNewWorkout == amountOfWorkoutsStart + 1, "New workout was not added!");
-
+        Assert.assertEquals(amountOfWorkoutsAfterAddingNewWorkout, (amountOfWorkoutsStart + 1), "New workout was not added!");
     }
 
     @AfterTest

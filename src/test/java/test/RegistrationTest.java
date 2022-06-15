@@ -11,8 +11,8 @@ import page.RegistrationPage;
 import page.TopBarPage;
 import service.RegistrationPageService;
 import service.UserProfilePageService;
-import utils.MailGenerator;
 
+import static utils.MailGenerator.getTemporaryEmail;
 import static utils.StringConstant.*;
 
 @Log4j2
@@ -22,7 +22,6 @@ public class RegistrationTest extends BaseTest {
     private RegistrationPage registrationPage;
     private TopBarPage topBarPage;
     private UserProfilePageService userProfilePageService;
-    private MailGenerator mailGenerator;
     private String tempEmail;
 
     @BeforeClass
@@ -31,12 +30,11 @@ public class RegistrationTest extends BaseTest {
         registrationPage = new RegistrationPage();
         topBarPage = new TopBarPage();
         userProfilePageService = new UserProfilePageService();
-        mailGenerator = new MailGenerator();
     }
 
     @BeforeMethod
     private void getTemporaryEmailForRegistrationTest() {
-        tempEmail = mailGenerator.getTemporaryEmail();
+        tempEmail = getTemporaryEmail();
     }
 
     @Test(description = "Successful registration of a new user")
@@ -54,8 +52,6 @@ public class RegistrationTest extends BaseTest {
         String actualWelcomingMessage = topBarPage.getTextOfWelcoming();
         String expectedWelcomingMessage = welcome + user.getFirstName();
         userProfilePageService.deleteAccount();
-        log.info("Actual message - \n" + actualWelcomingMessage + "\n");
-        log.info("Expected message - \n" + expectedWelcomingMessage + "\n");
         Assert.assertTrue(actualWelcomingMessage.contains(expectedWelcomingMessage), "Actual welcoming message doesn't match the expected one!");
     }
 

@@ -9,10 +9,9 @@ import static utils.StringConstant.REGISTRATION_URL;
 @Log4j2
 public class RegistrationPageService {
 
-    private RegistrationPage registrationPage = new RegistrationPage();
-    private UserData userData;
+    private final RegistrationPage registrationPage = new RegistrationPage();
 
-    public UserProfilePage register(UserData user){
+    public void register(UserData user){
         try{
             registrationPage.openPage(REGISTRATION_URL)
                     .fillInFirstName(user.getFirstName())
@@ -25,8 +24,6 @@ public class RegistrationPageService {
         catch (Exception exception){
             log.error("Successful registration failed");
         }
-        return new UserProfilePage();
-
     }
 
 }

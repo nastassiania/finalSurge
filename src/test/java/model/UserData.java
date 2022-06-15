@@ -15,5 +15,4 @@ public class UserData {
     private String confirmPassword;
     private String wrongConfirmPassword;
 
-
 }

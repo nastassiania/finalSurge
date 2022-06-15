@@ -12,7 +12,7 @@ public class DashboardPage extends BasePage{
 
     public int getAmountOfWorkouts(){
         log.info("Get amount of created workouts");
-        return Integer.valueOf(amountOfWorkouts.getText());
+        return Integer.parseInt(amountOfWorkouts.getText());
     }
 
 }

@@ -1,5 +1,8 @@
 package model;
 
+import lombok.Getter;
+
+@Getter
 public class EquipmentData {
 
     private String bikeName = "My bike";
@@ -9,27 +12,6 @@ public class EquipmentData {
     private double bikeStartingDistance = 12.66;
     private String distanceType = "km";
 
-    public String getBikeName() {
-        return bikeName;
-    }
-
-    public String getBikeBrand() {
-        return bikeBrand;
-    }
-
-    public String getBikeModel() {
-        return bikeModel;
-    }
-
-    public String getBikeCost() {
-        return String.valueOf(bikeCost);
-    }
-
-    public String getBikeStartingDistance() {
-        return String.valueOf(bikeStartingDistance);
-    }
-
-    public String getDistanceType() {
-        return distanceType;
+    public EquipmentData() {
     }
 }

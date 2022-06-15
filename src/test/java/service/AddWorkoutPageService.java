@@ -8,8 +8,8 @@ import page.DashboardPage;
 @Log4j2
 public class AddWorkoutPageService {
 
-    private AddWorkoutPage addWorkoutPage = new AddWorkoutPage();
-    private WorkoutData workoutData = new WorkoutData();
+    private final AddWorkoutPage addWorkoutPage = new AddWorkoutPage();
+    private final WorkoutData workoutData = new WorkoutData();
 
     public DashboardPage addNewRunWorkout(String runSubType) {
         try {

@@ -7,9 +7,9 @@ import page.*;
 @Log4j2
 public class OtherCalculatorsPageService {
 
-    private TopBarPage topBarPage = new TopBarPage();
-    private OtherCalculatorPage otherCalculatorPage = new OtherCalculatorPage();
-    private CalculatorData calculatorData = new CalculatorData();
+    private final TopBarPage topBarPage = new TopBarPage();
+    private final OtherCalculatorPage otherCalculatorPage = new OtherCalculatorPage();
+    private final CalculatorData calculatorData = new CalculatorData();
 
     public OtherCalculatorPage checkCaloricNeeds() {
         try {

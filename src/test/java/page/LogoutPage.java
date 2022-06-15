@@ -1,5 +1,6 @@
 package page;
 
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,6 +19,7 @@ public class LogoutPage extends BasePage{
         return messageAfterSuccessfulLogOut.getText();
     }
 
+    @Step("Click Account Login button")
     public void clickAccountLoginButton(){
         log.info("Click \"Account Login\" button");
         accountLoginButton.click();

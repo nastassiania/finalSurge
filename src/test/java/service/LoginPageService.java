@@ -3,14 +3,12 @@ package service;
 import lombok.extern.log4j.Log4j2;
 import model.UserData;
 import page.LoginPage;
-import page.UserProfilePage;
-
 import static utils.StringConstant.LOGIN_URL;
+
 @Log4j2
 public class LoginPageService {
 
-    private LoginPage loginPage = new LoginPage();
-    private UserProfilePage userProfilePage = new UserProfilePage();
+    private final LoginPage loginPage = new LoginPage();
 
     public void logIn(UserData credentials){
         try{

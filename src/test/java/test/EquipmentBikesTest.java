@@ -18,7 +18,6 @@ import static utils.StringConstant.*;
 public class EquipmentBikesTest extends BaseTest{
 
     private EquipmentPageService equipmentPageService;
-    private LoginPageService loginPageService;
     private TopBarPage topBarPage;
     private EquipmentPage equipmentPage;
 
@@ -27,7 +26,7 @@ public class EquipmentBikesTest extends BaseTest{
         equipmentPageService = new EquipmentPageService();
         topBarPage = new TopBarPage();
         equipmentPage = new EquipmentPage();
-        loginPageService = new LoginPageService();
+        LoginPageService loginPageService = new LoginPageService();
         loginPageService.logIn(UserData.builder().email(email).password(password).build());
     }
 
@@ -38,9 +37,7 @@ public class EquipmentBikesTest extends BaseTest{
         int amountOfUserBikesBeforeTest = getAmountOfUserBikes();
         equipmentPageService.addNewEquipment();
         int amountOfUserBikesAfterTest = getAmountOfUserBikes();
-        log.info("Amount of user's bikes before test - \n" + amountOfUserBikesBeforeTest + "\n");
-        log.info("Amount of user's bikes after test - \n" + amountOfUserBikesAfterTest + "\n");
-        Assert.assertTrue(amountOfUserBikesAfterTest==amountOfUserBikesBeforeTest+1, "New equipment was not added!");
+        Assert.assertEquals(amountOfUserBikesAfterTest, (amountOfUserBikesBeforeTest+1), "New equipment was not added!");
     }
 
     @AfterTest

@@ -12,18 +12,15 @@ import page.TopBarPage;
 import service.LoginPageService;
 import service.RegistrationPageService;
 import service.UserProfilePageService;
-import utils.MailGenerator;
-
+import static utils.MailGenerator.getTemporaryEmail;
 import static utils.StringConstant.*;
 
 @Log4j2
 public class AccountDeletionTest extends BaseTest {
 
     private UserProfilePageService userProfilePageService;
-    private RegistrationPageService registrationPageService;
     private LogoutPage logoutPage;
     private LoginPageService loginPageService;
-    private MailGenerator mailGenerator;
     private String tempEmail;
 
 
@@ -31,10 +28,9 @@ public class AccountDeletionTest extends BaseTest {
     public void login() {
         userProfilePageService = new UserProfilePageService();
         logoutPage = new LogoutPage();
-        registrationPageService = new RegistrationPageService();
-        mailGenerator = new MailGenerator();
+        RegistrationPageService registrationPageService = new RegistrationPageService();
         loginPageService = new LoginPageService();
-        tempEmail = mailGenerator.getTemporaryEmail();
+        tempEmail = getTemporaryEmail();
         UserData user = UserData.builder()
                 .firstName(firstName)
                 .lastName(lastName)
@@ -53,8 +49,6 @@ public class AccountDeletionTest extends BaseTest {
         logoutPage = userProfilePageService.deleteAccount();
         String actualMessageAfterAccountDeletion = logoutPage.getTextOfMessageAfterSuccessfulLogOut();
         String expectedMessageAfterAccountDeletion = successful_logout;
-        log.info("Actual message - \n" + actualMessageAfterAccountDeletion + "\n");
-        log.info("Expected message - \n" + expectedMessageAfterAccountDeletion + "\n");
         Assert.assertEquals(actualMessageAfterAccountDeletion, expectedMessageAfterAccountDeletion, "Actual message doesn't match the expected one!");
     }
 
@@ -66,8 +60,6 @@ public class AccountDeletionTest extends BaseTest {
         LoginPage loginPage = new LoginPage();
         String actualLoginMessage = loginPage.getTextOfErrorMessage();
         String expectedLoginMessage = invalid_login_creds;
-        log.info("Actual message - \n" + actualLoginMessage + "\n");
-        log.info("Expected message - \n" + expectedLoginMessage + "\n");
         Assert.assertEquals(actualLoginMessage, expectedLoginMessage, "Actual message doesn't match the expected one!");
     }
 

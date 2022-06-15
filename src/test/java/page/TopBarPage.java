@@ -2,6 +2,7 @@ package page;
 
 import elements.DropDown;
 import elements.TopBar;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -36,28 +37,33 @@ public class TopBarPage extends BasePage{
         return welcoming.getText() + userName.getText();
     }
 
-    public void chooseNeededOptionInUpperBar(String topMenuOption, String dropdowmTopMenuOption){
-        log.info("Choose \"" + topMenuOption + "\" and \"" + dropdowmTopMenuOption + "\" on the navigation panel");
+    @Step("Choose {topMenuOption} and {dropdownTopMenuOption} on the navigation panel")
+    public void chooseNeededOptionInUpperBar(String topMenuOption, String dropdownTopMenuOption){
+        log.info("Choose \"" + topMenuOption + "\" and \"" + dropdownTopMenuOption + "\" on the navigation panel");
         new TopBar(topMenuOption).chooseTopMenuOption();
-        new DropDown(dropdowmTopMenuOption).chooseTopMenuOption();
+        new DropDown(dropdownTopMenuOption).chooseTopMenuOption();
     }
 
+    @Step("Click \"Dashboard\" logo button")
     public void clickDashboardLogoButton(){
         log.info("Click \"Dashboard\" logo button");
         dashboardLogoButton.click();
     }
 
+    @Step("Click \"Other Calculators\" logo button")
     public void openOtherCalculatorsLogoButton(){
         log.info("Click \"Other Calculators\" logo button");
         otherCalculatorsLogoButton.click();
         driver.switchTo().frame(otherCalciFrame);
     }
 
+    @Step("Click \"Settings\"")
     public void clickSettingsButton(){
         log.info("Click \"Settings\"");
         settingsButton.click();
     }
 
+    @Step("lick \"Logout\"")
     public void clickLogOutButton() {
         log.info("Click \"Logout\"");
         logOutButton.click();

@@ -2,10 +2,12 @@ package page;
 
 import elements.ActivitySubType;
 import elements.DropDown;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import utils.Waiter;
+
+import static utils.Waiter.waitVisibilityOf;
 
 @Log4j2
 public class AddWorkoutPage extends BasePage {
@@ -43,26 +45,30 @@ public class AddWorkoutPage extends BasePage {
     @FindBy(xpath = "//input[@id='saveButton']")
     private WebElement addWorkoutButton;
 
+    @Step("Run activity choosing")
     public AddWorkoutPage chooseRunActivity() {
         log.info("Choose run activity");
         runActivity.click();
         return this;
     }
 
+    @Step("Activity SubType - {activitySubType} - choosing")
     public AddWorkoutPage chooseActivitySubType(String activitySubType) {
         log.info("Choose run activity sub-type - " + activitySubType);
         new ActivitySubType(activitySubType).chooseActivitySubType();
         return this;
     }
 
+    @Step("Today date choosing in calendar")
     public AddWorkoutPage chooseTodayInCalendar() {
         log.info("Choose today in calendar");
-        new Waiter().waitVisibilityOf(calendarField);
+        waitVisibilityOf(calendarField);
         calendarField.click();
         today.click();
         return this;
     }
 
+    @Step("Time of day- {timeOfDay} - choosing")
     public AddWorkoutPage chooseTimeOfDay(String timeOfDay) {
         log.info("Choose time");
         workoutTime.click();
@@ -70,6 +76,7 @@ public class AddWorkoutPage extends BasePage {
         return this;
     }
 
+    @Step("Input {nameOfWorkout} in Workout name field")
     public AddWorkoutPage fillInWorkoutName(String nameOfWorkout) {
         log.info("Enter workout name");
         workoutName.clear();
@@ -77,6 +84,7 @@ public class AddWorkoutPage extends BasePage {
         return this;
     }
 
+    @Step("Input {workoutDesc} in Workout Description field")
     public AddWorkoutPage fillInWorkoutDescription(String workoutDesc) {
         log.info("Enter workout description");
         workoutDescription.clear();
@@ -84,6 +92,7 @@ public class AddWorkoutPage extends BasePage {
         return this;
     }
 
+    @Step("Input {distanceToEnter} in distance field")
     public AddWorkoutPage fillInDistance(String distanceToEnter) {
         log.info("Enter distance");
         distance.clear();
@@ -91,6 +100,7 @@ public class AddWorkoutPage extends BasePage {
         return this;
     }
 
+    @Step("Input {durationToEnter} in duration field")
     public AddWorkoutPage fillInDuration(String durationToEnter) {
         log.info("Enter duration");
         duration.clear();
@@ -98,12 +108,14 @@ public class AddWorkoutPage extends BasePage {
         return this;
     }
 
+    @Step("Choose 'terrible' radio button")
     public AddWorkoutPage clickTerribleFeelingsRadioButton() {
         log.info("Pick \"How I feel\" - terrible");
         terribleFeelingsRadioButton.click();
         return this;
     }
 
+    @Step("Input {perceivedEffortToChoose} in Perceived Effort field")
     public AddWorkoutPage choosePerceivedEffort(String perceivedEffortToChoose) {
         log.info("Choose perceived effort");
         perceivedEffort.click();
@@ -111,6 +123,7 @@ public class AddWorkoutPage extends BasePage {
         return this;
     }
 
+    @Step("Click Add Workout Button")
     public void clickAddWorkoutButton() {
         log.info("Click \"Add workout\" button");
         addWorkoutButton.click();

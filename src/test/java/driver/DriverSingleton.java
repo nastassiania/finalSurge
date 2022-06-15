@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 public class DriverSingleton {
 
-    private static ThreadLocal<DriverSingleton> instance = new ThreadLocal<>();
+    private static final ThreadLocal<DriverSingleton> instance = new ThreadLocal<>();
 
     private WebDriver driver;
 

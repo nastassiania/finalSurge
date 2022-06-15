@@ -6,7 +6,7 @@ import page.*;
 @Log4j2
 public class UserProfilePageService {
 
-    private UserProfilePage userProfilePage = new UserProfilePage();
+    private final UserProfilePage userProfilePage = new UserProfilePage();
 
     public LogoutPage deleteAccount() {
         try {

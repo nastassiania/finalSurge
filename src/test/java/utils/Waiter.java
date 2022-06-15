@@ -11,20 +11,22 @@ import java.time.Duration;
 
 public class Waiter {
 
-    protected WebDriver driver = DriverSingleton.getInstance().getDriver();
+    private Waiter() {
+    }
 
-    private static int durationSec = 10;
+    protected static WebDriver driver = DriverSingleton.getInstance().getDriver();
 
-    public void waitElementToBeClickable(WebElement element){
+    private static final int durationSec = 10;
+
+    public static void waitElementToBeClickable(WebElement element){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(durationSec));
         wait.until(ExpectedConditions.elementToBeClickable(element));}
 
-    public void waitVisibilityOf(WebElement element){
+    public static void waitVisibilityOf(WebElement element){
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(durationSec));
         wait.until(ExpectedConditions.visibilityOf(element));}
 
-    public void waitVisibilityOfElementLocated(String xPath, String label){
+    public static void waitVisibilityOfElementLocated(String xPath, String label){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(durationSec));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.format(xPath, label))));}
-
 }

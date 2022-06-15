@@ -1,5 +1,8 @@
 package model;
 
+import lombok.Getter;
+
+@Getter
 public class WorkoutData {
 
     private String timeOfDay = "09:00 AM";
@@ -9,27 +12,6 @@ public class WorkoutData {
     private String duration = "01:00:05";
     private String perceivedEffort = "Max Effort";
 
-    public String getTimeOfDay() {
-        return timeOfDay;
-    }
-
-    public String getNameOfWorkout() {
-        return nameOfWorkout;
-    }
-
-    public String getWorkoutDescription() {
-        return workoutDescription;
-    }
-
-    public String getDistance() {
-        return distance;
-    }
-
-    public String getDuration() {
-        return duration;
-    }
-
-    public String getPerceivedEffort() {
-        return perceivedEffort;
+    public WorkoutData() {
     }
 }

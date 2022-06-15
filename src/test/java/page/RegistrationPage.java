@@ -1,5 +1,6 @@
 package page;
 
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -32,12 +33,14 @@ public class RegistrationPage extends BasePage{
     @FindBy(xpath = "//div[@class='alert alert-error']")
     private WebElement errorMessage;
 
+    @Step("Open {url}")
     public RegistrationPage openPage(String url) {
         log.info("Open registration page");
         driver.get(url);
         return this;
     }
 
+    @Step("Input {firstNameToEnter} into the First Name field")
     public RegistrationPage fillInFirstName(String firstNameToEnter) {
         log.info("Enter first name");
         firstName.clear();
@@ -45,6 +48,7 @@ public class RegistrationPage extends BasePage{
         return this;
     }
 
+    @Step("Input {lastNameToEnter} into the Last Name field")
     public RegistrationPage fillInLastName(String lastNameToEnter) {
         log.info("Enter last name");
         lastName.clear();
@@ -52,6 +56,7 @@ public class RegistrationPage extends BasePage{
         return this;
     }
 
+    @Step("Input {emailToEnter} into the email field")
     public RegistrationPage fillInEmail(String emailToEnter) {
         log.info("Enter email");
         email.clear();
@@ -59,6 +64,7 @@ public class RegistrationPage extends BasePage{
         return this;
     }
 
+    @Step("Choose {timeZoneToChoose} timezone")
     public RegistrationPage chooseTimeZone(String timeZoneToChoose) {
         log.info("Choose timezone");
         Select select = new Select(timeZone);
@@ -66,7 +72,7 @@ public class RegistrationPage extends BasePage{
         return this;
     }
 
-
+    @Step("Input {passwordToEnter} into the password field")
     public RegistrationPage fillInPassword(String passwordToEnter) {
         log.info("Enter password");
         password.clear();
@@ -74,6 +80,7 @@ public class RegistrationPage extends BasePage{
         return this;
     }
 
+    @Step("Input {confirmPasswordToEnter} into the confirm password field")
     public RegistrationPage fillInConfirmPassword(String confirmPasswordToEnter) {
          log.info("Enter password for confirmation");
         confirmPassword.clear();
@@ -81,6 +88,7 @@ public class RegistrationPage extends BasePage{
         return this;
     }
 
+    @Step("Click \"Create new account\" button")
     public void clickCreateNewAccountButton() {
         log.info("Click \"Create new account\" button");
         createNewAccountButton.click();

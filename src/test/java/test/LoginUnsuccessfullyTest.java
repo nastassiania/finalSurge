@@ -33,8 +33,6 @@ public class LoginUnsuccessfullyTest extends BaseTest{
         loginPageService.logIn(credentials);
         String actualLogInUnsuccessfullyMessage = loginLogoutPage.getTextOfErrorMessage();
         String expectedLogInUnsuccessfullyMessage = invalid_login_creds;
-        log.info("Actual message - \n" + actualLogInUnsuccessfullyMessage + "\n");
-        log.info("Expected message - \n" + expectedLogInUnsuccessfullyMessage + "\n");
         Assert.assertEquals(actualLogInUnsuccessfullyMessage, expectedLogInUnsuccessfullyMessage, "Actual message doesn't match the expected one!");
     }
 

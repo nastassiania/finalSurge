@@ -1,6 +1,7 @@
 package page;
 
 import elements.DropDown;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -49,6 +50,7 @@ public class EquipmentPage extends BasePage{
     @FindBy(xpath = "//table[@class='table']//tr")
     private List<WebElement> userBikes;
 
+    @Step("Input {equipmentNameToEnter} in equipment name field")
     public EquipmentPage fillInEquipmentName(String equipmentNameToEnter){
         log.info("Enter equipment name");
         equipmentName.clear();
@@ -56,6 +58,7 @@ public class EquipmentPage extends BasePage{
         return this;
     }
 
+    @Step("Choose {equipmentToChoose} in equipment brand field")
     public EquipmentPage chooseEquipmentBrand(String equipmentToChoose) {
         log.info("Choose equipment brand");
         equipmentBrandDropDown.click();
@@ -63,6 +66,7 @@ public class EquipmentPage extends BasePage{
         return this;
     }
 
+    @Step("Choose {equipmentToChoose} in equipment brand field")
     public EquipmentPage fillInEquipmentModel(String equipmentModelToEnter){
         log.info("Enter equipment model");
         equipmentModel.clear();
@@ -70,13 +74,15 @@ public class EquipmentPage extends BasePage{
         return this;
     }
 
-    public EquipmentPage fillInEquipmentCost(String equipmentCostToEnter){
+    @Step("Choose {equipmentCostToEnter} in equipment cost field")
+    public EquipmentPage fillInEquipmentCost(int equipmentCostToEnter){
         log.info("Enter equipment cost");
         equipmentCost.clear();
-        equipmentCost.sendKeys(equipmentCostToEnter);
+        equipmentCost.sendKeys(Integer.toString(equipmentCostToEnter));
         return this;
     }
 
+    @Step("Choose equipment date of purchase")
     public EquipmentPage chooseDateOfPurchase(){
         log.info("Enter equipment date of purchase");
         equipmentDatePurchased.click();
@@ -84,13 +90,15 @@ public class EquipmentPage extends BasePage{
         return this;
     }
 
-    public EquipmentPage fillInStartingDistance(String startingDistanceToEnter){
+    @Step("Choose {startingDistanceToEnter} in equipment distance field")
+    public EquipmentPage fillInStartingDistance(double startingDistanceToEnter){
         log.info("Enter starting distance");
         startingDistance.clear();
-        startingDistance.sendKeys(startingDistanceToEnter);
+        startingDistance.sendKeys(Double.toString(startingDistanceToEnter));
         return this;
     }
 
+    @Step("Choose {distanceTypeToChoose}")
     public EquipmentPage chooseDistanceType(String distanceTypeToChoose) {
         log.info("Choose distance type");
         distanceTypeSelect.click();
@@ -99,10 +107,10 @@ public class EquipmentPage extends BasePage{
         return this;
     }
 
-    public EquipmentPage clickAddEquipmentButton(){
+    @Step("Click Add Equipment button")
+    public void clickAddEquipmentButton(){
         log.info("Click \"Add equipment\" button");
         addEquipmentButton.click();
-        return this;
     }
 
     public int getAmountOfUserBikes(){
